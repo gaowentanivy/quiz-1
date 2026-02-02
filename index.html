@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Web Tech Practice</title>
+
+  <style>
+    /* CSS rules (exam relevant) */
+    h2 {
+      background-color: yellow;
+    }
+
+    .idx-newsev-date {
+      color: green;
+    }
+
+    article {
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+<section class="idx-newsev">
+  <div id="idx-newsev-top">
+    <h2 class="idx-newsev-top-title">Events</h2>
+    <div id="idx-newsev-all">
+      <a href="/events" class="idx-newsev-all link-arrow">All Events</a>
+    </div>
+  </div>
+
+  <!-- ✅ Container for dynamic articles -->
+  <div id="idx-newsev-block-w">
+
+    <article class="idx-newsev-block">
+      <p class="idx-newsev-date">
+        <span class="idx-newsev-date-day">17 </span>Feb 2023
+      </p>
+      <h3 class="idx-newsev-title">
+        <a href="#">First Seminar Title</a>
+      </h3>
+    </article>
+
+    <article class="idx-newsev-block">
+      <p class="idx-newsev-date">
+        <span class="idx-newsev-date-day">17 </span>Feb 2023
+      </p>
+      <h3 class="idx-newsev-title">
+        <a href="#">Second Seminar Title</a>
+      </h3>
+    </article>
+
+  </div>
+</section>
+
+<script>
+  /* 1️⃣ Change date of FIRST article */
+  document.querySelector(".idx-newsev-date").innerHTML =
+    '<span class="idx-newsev-date-day">27 </span>Feb 2023';
+
+  /* 2️⃣ Dynamically add a new article */
+  const container = document.getElementById("idx-newsev-block-w");
+
+  const article = document.createElement("article");
+  article.className = "idx-newsev-block";
+
+  const date = document.createElement("p");
+  date.className = "idx-newsev-date";
+  date.innerHTML = '<span class="idx-newsev-date-day">5 </span>Mar 2023';
+
+  const title = document.createElement("h3");
+  title.className = "idx-newsev-title";
+
+  const link = document.createElement("a");
+  link.href = "#";
+  link.textContent = "Dynamically Added Seminar";
+
+  /* Click event on title */
+  link.addEventListener("click", function () {
+    alert("Dynamic article clicked!");
+  });
+
+  title.appendChild(link);
+  article.appendChild(date);
+  article.appendChild(title);
+  container.appendChild(article);
+</script>
+
+</body>
+</html>
